@@ -19,9 +19,9 @@ return new class extends Migration
 
             $table->string("title");
             $table->integer('year');
-            $table->string('description');
-            $table->integer('rating');
-            $table->integer('ranking');
+            $table->text('description');
+            $table->float('rating');
+            $table->integer('ranking')->default(10);
             $table->string('review');
             $table->string('img_url');
 
