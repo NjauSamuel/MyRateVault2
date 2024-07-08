@@ -10,4 +10,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', fn() => to_route('my-movies.index'));
 
 Route::resource("my-movies", UserMovieController::class)
-    ->only(["index","update","create", "destroy"]);
+    ->only(["index","create", "store", "edit","update", "destroy"]);

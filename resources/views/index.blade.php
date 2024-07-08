@@ -40,7 +40,7 @@
 
                     <p class="overview"> {{ $movie->description }} </p>
 
-                    <a href="#" class="button">Update</a>
+                    <a href="{{route('my-movies.edit', $movie)}}" class="button">Update</a>
                     <a href="#" class="button delete-button">Delete</a>
 
                 </div>

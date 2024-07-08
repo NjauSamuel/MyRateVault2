@@ -8,33 +8,58 @@ use Illuminate\Http\Request;
 class UserMovieController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     *Code to list all Movies in the database
      */
     public function index()
     {
-        
         return view('index', ['movies' => UserMovie::latest()->get()]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Code to show a form for creating a new movie
      */
     public function create()
     {
         //
     }
 
-
     /**
-     * Update the specified resource in storage.
+     * Code to Store the new movie created above. 
      */
-    public function update(Request $request, UserMovie $userMovie)
+    public function store(Request $request)
     {
         //
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Code to show a form for editing an existing Movie
+     */
+    public function edit(UserMovie $userMovie)
+    {
+        //dd($userMovie); // Dump and die to check the content of $userMovie
+        return view('edit', ['movie' => $userMovie]);
+    }
+
+
+    /**
+     * Code to update an existing movie from the edit form above in Storage
+     */
+    public function update(Request $request, UserMovie $userMovie)
+    {
+        $request->validate([
+            'rating' => 'required|numeric|min:0|max:10',
+            'review' => 'required|string|max:255',
+        ]);
+
+        $userMovie->rating = $request->input('rating');
+        $userMovie->review = $request->input('review');
+        $userMovie->save();
+
+        return redirect()->route('my-movies.index');
+    }
+
+    /**
+     * Code to delete a Movie/Resource from storage
      */
     public function destroy(UserMovie $userMovie)
     {

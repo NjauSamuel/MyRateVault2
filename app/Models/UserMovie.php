@@ -10,6 +10,10 @@ class UserMovie extends Model
 {
     use HasFactory;
 
+    protected $table = 'user_movies';
+
+    protected $fillable = ['title', 'rating', 'review'];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
