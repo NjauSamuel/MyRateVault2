@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom-height {
+    font-size: 12px;
+    height: 100px;
+    width: 100%;
+    overflow: auto; /* Allows scrolling if content exceeds height */
+    resize: none;
+}

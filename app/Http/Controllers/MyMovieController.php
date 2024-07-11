@@ -47,17 +47,27 @@ class MyMovieController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(MyMovie $myMovie)
     {
-        //
+        //dd($myMovie);
+        return view('my-movies.edit', ['movie' => $myMovie]);        
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, MyMovie $myMovie)
     {
-        //
+        // Validate and update the specified movie
+        $request->validate([
+            'rating' => 'required|numeric|min:0|max:10',
+            'review' => 'required|string|max:1000',
+        ]);
+
+        $myMovie->update($request->all());
+
+        return redirect()->route('my-movies.index')
+                         ->with('success', 'Movie updated successfully.');
     }
 
     /**

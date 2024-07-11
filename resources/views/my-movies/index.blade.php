@@ -13,7 +13,7 @@
         @foreach ($movies as $movie)
 
             <div class="card">
-                
+
                 <div
                     class="front"
                     style=" background-image: url('{{ $movie->img_url }}'); ">
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="rating">
-                            <label> {{ $movie->rating }} </label>
+                            <label> {{ number_format($movie->rating, 1) }} </label>
                             <i class="fas fa-star star"></i>
                         </div>
 
@@ -38,7 +38,7 @@
                             {{ $movie->description}}
                         </p>
 
-                        <a href="#" class="button">Update</a>
+                        <a href="{{ route('my-movies.edit', $movie) }}" class="button">Update</a>
                         <a href="#" class="button delete-button">Delete</a>
 
                     </div>
