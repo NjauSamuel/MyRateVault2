@@ -11,6 +11,11 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public function myMovies()
+    {
+        return $this->hasMany(MyMovie::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
